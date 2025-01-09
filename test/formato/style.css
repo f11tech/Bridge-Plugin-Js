@@ -1,0 +1,206 @@
+@page {
+    margin: 0;
+    size: 2.8in 22in;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-weight: bold;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Arial, Sans-serif;
+    height: 95%;
+}
+
+/* Elements */
+
+h1, h2, h3, h4 span, h5 {
+    text-align: center;
+
+}
+h1, h5 {
+    background-color: black;
+    color: white;
+    padding: 0.4rem;
+    vertical-align: middle;
+}
+h3 {
+    font-size: 0.85rem;
+}
+h5 {
+    font-size: 0.8rem;
+    line-height: normal;
+}
+
+p, li {
+    font-size: 1.1rem;
+}
+footer p {
+    font-size: 7pt;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+td {
+    padding: 0;
+    margin: 0;
+}
+
+hr {
+    border-top: 2px dotted;
+    margin: 1rem 0 0.5rem;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 1.3rem;
+    height: 1.3rem;
+    vertical-align: middle;
+    margin-left: 1.2rem;
+}
+
+input[type="checkbox"] {
+    border-radius: 6px;
+    width: 2.2rem;
+    height: 2.2rem;
+    margin: 0.6rem 0;
+}
+
+/* Constants */
+
+.no-padding {
+    padding: 0;
+}
+.no-margin {
+    margin: 0;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.big-letters {
+    font-size: 1.3rem;
+}
+.important-letters {
+    font-size: 1.4rem;
+}
+
+.instructions {
+    margin: 0.2cm 0.1cm 2px;
+    line-height: 1.3;
+    font-size: 8pt;
+}
+
+/* Classes */
+
+
+label, .fold {
+    font-size: 1.1rem;
+}
+.fold {
+    padding-bottom: 1rem;
+}
+
+.form-title {
+    margin: 0.5cm 0 0.25cm;
+}
+
+.img-div {
+    height: 2.5cm;
+    padding: 0.5cm 0 0.3cm;
+    width: 100%;
+    display: grid;
+}
+.img-div img {
+    padding-left: 0.35cm;
+    width: 85%;
+}
+
+.generic-input, .big-input {
+    border: 2px solid black;
+    border-radius: 6px;
+    min-height: 2.4rem;
+    padding: 4px 8px;
+    margin-bottom: 0.1cm;
+    width: 92%;
+}
+.big-input {
+    height: 120px;
+    position: relative;
+    text-align: center;
+    margin-top: 3px;
+}
+.big-input h2 {
+    bottom: 4px;
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+
+.binary-option {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 4rem;
+}
+
+.radio-options {
+    margin-bottom: 0.4rem;
+}
+.radio-options label {
+    line-height: 1.6;
+    font-size: 1.2rem;
+}
+
+.form-question {
+    margin: 0 0 3px;
+}
+
+.first-row {
+    margin: 0.3rem 0;
+    padding: 0.2rem 0;
+}
+
+.number {
+    font-size: 1.4rem;
+}
+
+.sub-question {
+    margin-left: 2rem;
+}
+.sub-question p {
+    margin: 0 0 0.3rem;
+}
+
+.advise {
+    margin: 0.1cm 0.05cm 0.2cm;
+}
+
+.date {
+    font-weight: normal;
+    text-align: right;
+}
+.date span {
+    font-weight: bold;
+}
+
+.phone-input {
+    text-align: right;
+}
+.phone-input input {
+    width: 65%
+}

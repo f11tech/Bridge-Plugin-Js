@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebSocket Bridge Example</title>
     <script src="../dist/bridge.min.js"></script>
+    <script src="../src/WebSocketManager.js"></script>
 </head>
 <body>
 <h1>WebSocket Bridge Example</h1>
@@ -26,7 +27,7 @@
     const printReceiptButton = document.getElementById("print-receipt-button");
     printReceiptButton.addEventListener("click", async () => {
         try {
-            const response = await fetch("test/formato/receipt.html");
+            const response = await fetch("formato/receipt.html");
             if (!response.ok) {
                 console.error("Failed to load receipt HTML file:", response.statusText);
                 return;
