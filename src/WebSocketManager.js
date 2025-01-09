@@ -48,4 +48,4 @@ class WebSocketManager {
     }
 }
 
-export default WebSocketManager;
+window.WebSocketManager = WebSocketManager;

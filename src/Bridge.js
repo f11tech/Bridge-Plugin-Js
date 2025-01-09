@@ -1,8 +1,6 @@
-import WebSocketManager from './WebSocketManager.js';
-
 class Bridge {
     constructor(port = 51510) {
-        this.webSocketManager = new WebSocketManager(port);
+        this.webSocketManager = new window.WebSocketManager(port); // Use global WebSocketManager
     }
 
     connect() {
@@ -20,6 +18,5 @@ class Bridge {
     }
 }
 
+// Attach Bridge to the global window object
 window.Bridge = Bridge;
-
-export default Bridge;

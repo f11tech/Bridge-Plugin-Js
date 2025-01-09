@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Bridge Example</title>
+    <script src="../dist/bridge.min.js"></script>
+</head>
+<body>
+<h1>WebSocket Bridge Example</h1>
+
+<!-- Buttons -->
+<button id="print-receipt-button">Print Receipt</button>
+
+<script>
+    // Create a new Bridge instance
+    const bridge = new Bridge(51510);
+
+    // Automatically connect to the WebSocket server on page load
+    window.onload = () => {
+        bridge.connect();
+        console.log('WebSocket connection initialized.');
+    };
+
+    // Add event listener to the "Print Receipt" button
+    const printReceiptButton = document.getElementById("print-receipt-button");
+    printReceiptButton.addEventListener("click", async () => {
+        try {
+            const response = await fetch("test/formato/receipt.html");
+            if (!response.ok) {
+                console.error("Failed to load receipt HTML file:", response.statusText);
+                return;
+            }
+            const receiptHtml = await response.text();
+            const configs = ["Cliente"];
+            bridge.print(configs, receiptHtml);
+            console.log("Print request sent.");
+        } catch (error) {
+            console.error("Error printing receipt:", error);
+        }
+    });
+</script>
+</body>
+</html>
