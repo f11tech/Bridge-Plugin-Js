@@ -1,0 +1,21 @@
+{
+  "name": "bridge-plugin-js",
+  "version": "1.0.0",
+  "description": "BRIDGE Plugin JavaScript",
+  "homepage": "https://github.com/f11tech/Bridge-Plugin-Js#readme",
+  "bugs": {
+    "url": "https://github.com/f11tech/Bridge-Plugin-Js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f11tech/Bridge-Plugin-Js.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "Bridge.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild src/Bridge.js --bundle --minify --outfile=dist/bridge.min.js"
+  }
+}
