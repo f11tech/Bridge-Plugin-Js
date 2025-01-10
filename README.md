@@ -1,1 +1,1 @@
-## Bridge Plugin JavaScript
+## Index Plugin JavaScript

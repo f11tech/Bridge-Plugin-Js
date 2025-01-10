@@ -18,5 +18,4 @@ class Bridge {
     }
 }
 
-// Attach Bridge to the global window object
 window.Bridge = Bridge;

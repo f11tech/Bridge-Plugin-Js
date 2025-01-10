@@ -13,10 +13,13 @@
   "license": "ISC",
   "author": "",
   "type": "commonjs",
-  "main": "Bridge.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild src/Bridge.js --bundle --minify --outfile=dist/bridge.min.js",
+    "build": "esbuild src/index.js --bundle --minify --outfile=dist/bridge.min.js",
     "dev": ""
+  },
+  "devDependencies": {
+    "esbuild": "0.24.2"
   }
 }
