@@ -45,3 +45,8 @@ closeConnectionButton.addEventListener("click", async () => {
         console.error("Error disconnecting connection:", error);
     }
 })
+
+window.onclose = () => {
+    bridge.disconnect();
+    console.log('WebSocket connection disconnected.');
+}

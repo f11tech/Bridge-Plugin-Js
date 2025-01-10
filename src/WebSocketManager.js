@@ -15,7 +15,6 @@ class WebSocketManager {
             const message = JSON.parse(event.data);
             console.log('Message from server:', message);
 
-            // Add custom event logic if needed
             this.handleMessage(message);
         };
 
@@ -39,7 +38,6 @@ class WebSocketManager {
     handleMessage(message) {
         console.log('Handling message:', message);
 
-        // Example: Log different types
         if (message.type === 'printStatus') {
             console.log('Print status:', message.data);
         } else if (message.type === 'portMessageStatus') {

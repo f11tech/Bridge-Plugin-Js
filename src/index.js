@@ -1,6 +1,6 @@
 class Bridge {
     constructor(port = 51510) {
-        this.webSocketManager = new window.WebSocketManager(port); // Use global WebSocketManager
+        this.webSocketManager = new window.WebSocketManager(port);
     }
 
     connect() {
