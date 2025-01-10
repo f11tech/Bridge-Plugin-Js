@@ -1,4 +1,4 @@
-const bridge = new Bridge(51510);
+let bridge = new Bridge(51510);
 
 // Automatically connect to the WebSocket server on page load
 window.onload = () => {
