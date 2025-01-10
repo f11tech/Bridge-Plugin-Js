@@ -46,6 +46,10 @@ class WebSocketManager {
             console.log('Port message status:', message.data);
         }
     }
+
+    disconnect() {
+        this.socket.close();
+    }
 }
 
 window.WebSocketManager = WebSocketManager;

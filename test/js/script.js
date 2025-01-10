@@ -7,7 +7,7 @@ window.onload = () => {
 };
 
 // Add event listener to the "Print Receipt" button
-const printReceiptButton = document.getElementById("print-receipt-button");
+const printReceiptButton = document.getElementById("btn-print-receipt");
 printReceiptButton.addEventListener("click", async () => {
     try {
         const response = await fetch("assets/formato/receipt.html");
@@ -24,7 +24,7 @@ printReceiptButton.addEventListener("click", async () => {
     }
 });
 
-const sendMessageButton = document.getElementById("send-message-button");
+const sendMessageButton = document.getElementById("btn-send-message");
 sendMessageButton.addEventListener("click", async () => {
     const messageA = document.getElementById("messageA").value;
     const messageB = document.getElementById("messageB").value;
@@ -36,3 +36,12 @@ sendMessageButton.addEventListener("click", async () => {
         console.error("Error sending message:", error);
     }
 });
+
+const closeConnectionButton = document.getElementById("btn-close-connection");
+closeConnectionButton.addEventListener("click", async () => {
+    try {
+        bridge.disconnect();
+    } catch (error) {
+        console.error("Error disconnecting connection:", error);
+    }
+})
