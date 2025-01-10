@@ -16,7 +16,7 @@ printReceiptButton.addEventListener("click", async () => {
             return;
         }
         const receiptHtml = await response.text();
-        const configs = ["new"];
+        const configs = ["Client"];
         bridge.print(configs, receiptHtml);
         console.log("Print request sent.");
     } catch (error) {
