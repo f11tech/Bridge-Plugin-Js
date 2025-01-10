@@ -1,7 +1,12 @@
 const esbuild = require('esbuild');
+const webSocketManagerPath = "src/WebSocketManager.js";
 
 esbuild.build({
     entryPoints: ['src/index.js'],
+    inject: [
+        webSocketManagerPath
+    ],
     bundle: true,
-    outfile: 'dist/bridge.min.js',
+    minify: true,
+    outfile: 'dist/bridge.min.js'
 })
