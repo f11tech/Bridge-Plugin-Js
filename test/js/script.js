@@ -1,4 +1,4 @@
-const bridge = new Bridge(51510);
+let bridge = new Bridge(51510);
 
 // Automatically connect to the WebSocket server on page load
 window.onload = () => {
@@ -16,7 +16,7 @@ printReceiptButton.addEventListener("click", async () => {
             return;
         }
         const receiptHtml = await response.text();
-        const configs = ["Client"];
+        const configs = ["Cliente"];
         bridge.print(configs, receiptHtml);
         console.log("Print request sent.");
     } catch (error) {
@@ -40,13 +40,18 @@ sendMessageButton.addEventListener("click", async () => {
 const closeConnectionButton = document.getElementById("btn-close-connection");
 closeConnectionButton.addEventListener("click", async () => {
     try {
-        bridge.disconnect();
+        disconnectClient();
     } catch (error) {
         console.error("Error disconnecting connection:", error);
     }
 })
 
 window.onclose = () => {
+    disconnectClient();
+}
+
+function disconnectClient() {
     bridge.disconnect();
     console.log('WebSocket connection disconnected.');
+    bridge = null;
 }
