@@ -8,7 +8,7 @@ class Bridge {
     }
 
     print(configs, html)  {
-        const message = { type: 'printFile', data: html, configs };
+        const message = { type: 'printFile', data: html, clientConfigs: configs };
         this.webSocketManager.sendMessage(message);
     }
 
