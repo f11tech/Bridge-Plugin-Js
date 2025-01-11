@@ -1,4 +1,5 @@
 let bridge = new Bridge(51510);
+let configs = [];
 
 // Automatically connect to the WebSocket server on page load
 window.onload = () => {
@@ -58,17 +59,26 @@ function convertArrayBufferToPem(buffer, keyType) {
     return pemString;
 }
 
-// Add event listener to the "Print Receipt" button
 const printReceiptButton = document.getElementById("btn-print-receipt");
 printReceiptButton.addEventListener("click", async () => {
+    const input = document.getElementById("configNames").value;
+    const filePath = "assets/receipt-files/formato/";
+    const fileName = "receipt.html";
+
+    if (input) {
+        configs = input.split(',').map(item => item.trim());
+        console.log(configs);
+    }
     try {
-        const response = await fetch("assets/formato/receipt.html");
+        console.log(filePath + fileName);
+        const response = await fetch(filePath + fileName);
+
         if (!response.ok) {
             console.error("Failed to load receipt HTML file:", response.statusText);
             return;
         }
-        const receiptHtml = await response.text();
-        const configs = ["Cliente"];
+
+        let receiptHtml = await response.text();
         bridge.print(configs, receiptHtml);
         console.log("Print request sent.");
     } catch (error) {
