@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ticket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="ticket"><div class="container">
+        <div class="logo-container">
+            <img
+                class="logo"
+                src="images/logo.png"
+                alt="Logo">
+        </div>
+
+        <div class="content-container">
+            <p class="text-center font-weight-bold fs-3" id="sucursal">HACIENDA SOLER</p>
+            <p class="text-center fs-2" id="direccion">
+                LIBRAMIENTO SUR #1051, COL PLAYAS DE TIJUANA C.P 22500 TIJUANA BC
+            </p>
+            <p class="text-center fs-2">RFC. SHS040508U2A</p>
+        </div>
+    </div>
+    <table class="receiptTable">
+        <tbody>
+            <tr>
+                <td class="description" id="operacion" style="font-size: 9pt" colspan="2"># Venta: N62</td>
+            </tr>
+            <tr class="line">
+                <td class="description" id="current-date" style="font-size: 9pt"></td>
+                <td class="amount" id="current-time" style="font-size: 9pt"></td>
+            </tr>
+            <tr class="line">
+                <td class="description" style="font-size: 9pt" colspan="2">Público General - 1</td>
+            </tr>
+            <tr>
+                <td class="room-description" style="font-size: 9pt; width: 40%">Habitación:</td>
+                <td class="room-in-cell font-weight-bold" style="font-size: 15pt">#102</td>
+            </tr>
+            <tr>
+                <td class="description" style="font-size: 9pt">Sub Total</td>
+                <td class="amount" style="font-size: 9pt">$634.78 MXN</td>
+            </tr>
+            <tr>
+                <td class="description" style="font-size: 9pt">IVA 8%</td>
+                <td class="amount" style="font-size: 9pt">$50.78 MXN</td>
+            </tr>
+            <tr>
+                <td class="description" style="font-size: 9pt">ISH 7%</td>
+                <td class="amount" style="font-size: 9pt">$44.43 MXN</td>
+            </tr>
+            <tr>
+                <td class="description" style="font-size: 9pt">Total MXN</td>
+                <td class="amount" style="font-size: 9pt">$730.00 MXN</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="line">
+                <td class="description" style="font-size: 9pt">Total USD (16.80 x 1)</td>
+                <td class="amount" style="font-size: 9pt">$43.45 USD</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="text-center fs-2" style="font-size: 9pt">GRACIAS POR SU PREFERENCIA</p>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

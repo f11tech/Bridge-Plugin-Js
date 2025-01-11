@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ticket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+    <style>
+        @page {
+            margin-top: 0cm;
+            margin-left: 0cm;
+            margin-right: 0cm;
+            margin-bottom: 0cm;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        * {
+            font-family: 'Droid Sans Mono', monospace;
+        }
+
+
+        .receiptTable td,
+        .receiptTable th,
+        .receiptTable tr,
+        .receiptTable {
+            border-collapse: collapse;
+        }
+
+        .receiptTable {
+            margin: 0.25cm auto;
+            width: 100%;
+        }
+        .stripTable td{
+            padding: 0 !important;
+        }
+        .receiptTable td {
+            padding: 0;
+        }
+
+        .receiptTable .description {
+            padding-left: 0;
+        }
+        .receiptTable .amount {
+            padding-right: 0;
+            text-align: right;
+        }
+
+        .receiptTable tr.line th,
+        .receiptTable tr.line td {
+            border-bottom: .8px dashed black;
+        }
+
+        .receiptTable tr.space th,
+        .receiptTable tr.space td {
+            padding: 10px 0;
+        }
+
+        .text-center {
+            text-align: center;
+            align-content: center;
+        }
+        .font-weight-bold {
+            font-weight: 600;
+        }
+
+        .ticket {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .fs-2 {
+            font-size: 100%;
+        }
+
+        p {
+            line-height: 120%;
+            margin: 0 auto 0.05cm;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: .9in;
+            width: .9in;
+        }
+
+        .room-number {
+            font-size: xxx-large;
+        }
+
+        .container {
+            display: flex;
+            align-items: center; /* Center vertically */
+        }
+
+        .logo-container {
+            flex: 0 0 auto; /* The logo container won't grow or shrink */
+            margin-right: 10px; /* Adjust the spacing between logo and content */
+        }
+
+        .logo {
+            max-width: 100px; /* Set the maximum width of the logo */
+        }
+
+        .content-container {
+            flex: 1 1 auto; /* The content container will grow to fill available space */
+        }
+
+        .fs-2 {
+            font-size: 75%;
+        }
+
+        .fs-3 {
+            font-size: 95%;
+        }
+        .stripTextSize
+        {
+            font-size: 8pt;
+        }
+
+        .folioTextSize
+        {
+            font-size: 7pt;
+        }
+        .black-cell {
+            background-color: black;
+            color: white;
+        }
+        .white-cell {
+            background-color: white;
+            color: white;
+        }
+        .special-text {
+            white-space: nowrap;
+        }
+        .room-description {
+            padding-left: 0;
+            word-wrap: inherit;
+        }
+        .room-in-cell{
+            padding-right: 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="ticket"><div class="ticket">
+    <table class="receiptTable">
+        <tbody>
+        <tr>
+            <td class="description" style="font-size: 11pt"># Venta: 2</td>
+            <td class="amount" style="font-size: 11pt">Hora: 18:27</td>
+        </tr>
+
+        <tr>
+            <td class="description" style="font-size: 11pt">Fecha: 18/Oct/24</td>
+            <td class="amount" style="font-size: 11pt">Habitacion: <b>102</b></td>
+        </tr>
+        <tr>
+            <td class="description" style="font-size: 11pt">Total M.X.N</td>
+            <td class="amount" style="font-size: 11pt;font-weight: bold;">$200.00 MXN</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

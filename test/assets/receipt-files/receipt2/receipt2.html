@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ticket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+    <style>
+        @page {
+            margin-top: 0cm;
+            margin-left: 0cm;
+            margin-right: 0cm;
+            margin-bottom: 0cm;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        * {
+            font-family: 'Droid Sans Mono', monospace;
+        }
+
+
+        .receiptTable td,
+        .receiptTable th,
+        .receiptTable tr,
+        .receiptTable {
+            border-collapse: collapse;
+        }
+
+        .receiptTable {
+            margin: 0.25cm auto;
+            width: 100%;
+        }
+        .stripTable td{
+            padding: 0 !important;
+        }
+        .receiptTable td {
+            padding: 0;
+        }
+
+        .receiptTable .description {
+            padding-left: 0;
+        }
+        .receiptTable .amount {
+            padding-right: 0;
+            text-align: right;
+        }
+
+        .receiptTable tr.line th,
+        .receiptTable tr.line td {
+            border-bottom: .8px dashed black;
+        }
+
+        .receiptTable tr.space th,
+        .receiptTable tr.space td {
+            padding: 10px 0;
+        }
+
+        .text-center {
+            text-align: center;
+            align-content: center;
+        }
+        .font-weight-bold {
+            font-weight: 600;
+        }
+
+        .ticket {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .fs-2 {
+            font-size: 100%;
+        }
+
+        p {
+            line-height: 120%;
+            margin: 0 auto 0.05cm;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: .9in;
+            width: .9in;
+        }
+
+        .room-number {
+            font-size: xxx-large;
+        }
+
+        .container {
+            display: flex;
+            align-items: center; /* Center vertically */
+        }
+
+        .logo-container {
+            flex: 0 0 auto; /* The logo container won't grow or shrink */
+            margin-right: 10px; /* Adjust the spacing between logo and content */
+        }
+
+        .logo {
+            max-width: 100px; /* Set the maximum width of the logo */
+        }
+
+        .content-container {
+            flex: 1 1 auto; /* The content container will grow to fill available space */
+        }
+
+        .fs-2 {
+            font-size: 75%;
+        }
+
+        .fs-3 {
+            font-size: 95%;
+        }
+        .stripTextSize
+        {
+            font-size: 8pt;
+        }
+
+        .folioTextSize
+        {
+            font-size: 7pt;
+        }
+        .black-cell {
+            background-color: black;
+            color: white;
+        }
+        .white-cell {
+            background-color: white;
+            color: white;
+        }
+        .special-text {
+            white-space: nowrap;
+        }
+        .room-description {
+            padding-left: 0;
+            word-wrap: inherit;
+        }
+        .room-in-cell{
+            padding-right: 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="ticket">
+    <div class="container">
+        <div class="logo-container">
+            <img
+                    class="logo"
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAABYlQAAWJUB2W030wAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAATRSURBVHic7d0xbBtlGIfxJ4SmEnEBKQtVooIg0Gx0gXYENkCCoC5IFYgNlrYL3RnZaGFirtQBsSDY2RACIdiApULQFBhYGkdCIpEZzkjIcmKf47v3873PT3rH+Hvvvu9/Z9/ZF5AkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSVJ7lqIbaMgjwAvAeWALeBxYA3rAicC+FsE/QB/4C7gN/AR8DXwJ/BHYlyZYA64A3wIDq5H6Brg83NcqxAZwHdgjfoFkqT7wAbA+xfyoISeAq8Au8Qsia+0B7wEnj54qzdtZ4AfiF4BV1ffAU0fOmObmIh71S6x7wGtHzJvm4C2qqxTRk22Nr33gncMmT8fzNvETbE1Xlw+ZQ83oItXRJXpirelqH9geO5OFWYQbYZvAd8CD0Y2olj7wDNWNtGLdF93ABCvAp7j4F1EPuEXhd96XoxuY4BpwKboJzew01dWhr6IbOUzJb4HWgZ+B1ehGdCx9qnsEv0c3Mk7Jb4Gu4eLvgh7wbnQThyn1DLAG/Ao8EN2I5mIPeJTqG6ZFKfUMcAkXf5esAq9HNzFOqQF4I7oBzd2b0Q2MU+JboNPADmX2ptkNqOb2z+hG/q/EM8DzuPi7aAl4LrqJUSUG4Hx0A2rMhegGRpUYgK3oBtSYs9ENjCoxAJvRDagxT0Y3MKrEADwc3YAaU9zclhiAXnQDasyp6AZGlXi1ZRDdgBpV1Jor8QwgtcYAKDUDoNQMgFIzAFJhZn0Swd/ADaqvUkT+kGZ12MOHw56O+4SFrm2XJphlp94Bno5odoJzVL3Nuli6uF2aYJYjZImL5D/nmO2I2dXt0gR1d+iNmDZr+Qi3ywBMqe4OfTamzVou4HYZgCnV3aGL8N2hHm5XkQEo6nsZQ3V3UonbMI7bVSlqu7wPoNQMgFIzAErNACg1A6DUDIBSMwBKzQAoNQOg1AyAUjMAkiRJkiRJkiRJkiRJkqSFF/2MljPAq8DLwGPABrFPQFbz9qgerPsL8AXwGfBbZEMR1oGPgX3qP1nM6lYdAJ9QHQBT2AZ2id/xVll1D3iFjrtKlfjonW2VWQfAFTpqGxe/NbkOaPFM0NaH4A3gRxbjiceKtwtsAXebHmi56QGGrlP9fylpGieBh4DPmx6ojTPAGeA27YVN3XBAdWXoTpODtPGj+G1c/KpvmeoeUaPaCMCLLYyhbnqp6QHaCMBmC2Oom55oeoA2PgPs4tUfzaYPnGpygDYCMGhhDHVXo2vUJ8MpNQOg1AyAUjMASs0AKDUDoNQMgFIzAErNACg1A6DUDIBSMwBKzQAoNQOg1AyAUjMASs0AKDUDoNQMgFIzAErNACg1A6DUDIBSMwBKzQAoNQOg1AyAUjMASs0AKDUDoNQMgFIzAErNACg1A6DUDIBSMwBKzQAoNQOg1AyAUjMASs0AKDUDoNQMgFIzAErNACg1A6DUDIBSuz+6gRqWohtQLYPoBqbhGUCpGQClZgCUmgFQagZAqRkApWYAlJoBUGoGQKkZAKVmAJSaAVBqBkCpGQCl1kYA7s7hNXbm8Bpq10LMexsBuFnIa6hdzvvQCvA+VZoHNWtn+LcrrXet43LeJUmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJElSLf8Ci5mImn4oClwAAAAASUVORK5CYII="
+                    alt="Logo">
+        </div>
+        <div class="content-container">
+            <p class="text-center font-weight-bold fs-3">HACIENDA SOLER</p>
+            <p class="text-center fs-2">
+                LIBRAMIENTO SUR #1051, COL PLAYAS DE TIJUANA C.P 22500 TIJUANA BC
+            </p>
+            <p class="text-center fs-2">RFC. SHS040508U2A</p>
+        </div>
+    </div>
+    <table class="receiptTable">
+        <tbody>
+
+        <tr class="line">
+            <td class="description" style="font-size: 9pt"># Venta: 2</td>
+            <td class="amount" style="font-size: 9pt">18/Oct/24</td>
+        </tr>
+        <tr class="line">
+            <td class="description" style="font-size: 9pt">Público General</td>
+            <td class="amount"></td>
+        </tr>
+        <tr>
+            <td class="description" style="font-size: 9pt">Descripcion</td>
+            <td class="amount" style="font-size: 9pt">Total</td>
+        </tr>
+
+        <tr>
+            <td class="description" style="font-size: 9pt">Bar 1</td>
+            <td class="amount" style="font-size: 9pt">(2) $92.59 MXN</td>
+        </tr>
+
+        <tr>
+            <td class="description" style="font-size: 9pt"></td>
+            <td class="amount" style="font-size: 9pt"></td>
+        </tr>
+
+        <tr>
+            <td class="description" style="font-size: 9pt">Sub Total</td>
+            <td class="amount" style="font-size: 9pt">$185.19 MXN</td>
+        </tr>
+        <tr>
+            <td class="description" style="font-size: 9pt">Iva 8 %</td>
+            <td class="amount" style="font-size: 9pt">$14.81 MXN</td>
+        </tr>
+
+        <tr>
+            <td class="description font-weight-bold" style="font-size: 9pt">Total M.X.N</td>
+            <td class="amount font-weight-bold" style="font-size: 9pt">$200.00 MXN</td>
+        </tr>
+        <tr>
+            <td class="description font-weight-bold" style="font-size: 9pt">Total USD (16.8 x 1)</td>
+            <td class="amount font-weight-bold" style="font-size: 9pt">11.90 USD</td>
+        </tr>
+        <tr class="line">
+            <td class="description"></td>
+            <td class="amount"></td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="text-center fs-2" style="font-size: 9pt">GRACIAS POR SU PREFERENCIA</p>
+</div>
+</body>
+</html>

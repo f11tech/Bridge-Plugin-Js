@@ -1,0 +1,467 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Money Express</title>
+    <link rel="icon" type="image/ico" href="/public/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style type="text/css">
+        @page {
+            margin: 0;
+            size: 7.2cm 54cm;
+        }
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, Sans-serif;
+            height: 100%;
+            width: 7.2cm;
+        }
+        footer {
+            clear: both;
+            text-align: center;
+        }
+        .cf:before, .cf:after { content: ""; display: table; }
+        .cf:after { clear: both; }
+        .cf { zoom: 1; }
+        /* Classes */
+        .big-input {
+            border: 2px solid black;
+            border-radius: 6px;
+            margin-bottom: 5px;
+            height: 120px;
+            position: relative;
+            text-align: center;
+        }
+        .cellphone-check {
+            border: 2px solid black;
+            border-radius: 6px;
+            display: inline-block;
+            height: 31px;
+            width: 15%;
+        }
+        .cellphone-components {
+            clear: both;
+            float: right;
+            margin-bottom: 3px;
+            margin-top: 3px;
+            width: 95%;
+        }
+        .cellphone-input {
+            border: 2px solid black;
+            border-radius: 6px;
+            display: inline-block;
+            font-weight: bold;
+            height: 23px;
+            line-height: 23px;
+            margin-left: 5px;
+            padding: 4px 8px;
+            width: 87%;
+        }
+        .cellphone-inputs {
+            display: inline-block;
+            float: right;
+            height: 35px;
+            width: 78%;
+        }
+        .cellphone-title {
+            clear: both;
+            display: inline-block;
+            font-size: 13px;
+            line-height: 35px;
+            text-align: right;
+            width: 22%;
+        }
+        .checkbox-input {
+            border: 2px solid black;
+            border-radius: 50%;
+            display: inline-block;
+            height: 7px;
+            width: 7px;
+        }
+        .checkbox-inputs {
+            float: right;
+            margin-bottom: 4px;
+            margin-top: 2px;
+            width: 95%;
+        }
+        .checkbox-text {
+            display: inline-block;
+            font-size: 12px;
+            width: 90%;
+        }
+        .company-name {
+            font-size: 6.35pt;
+            margin: 0 auto;
+            margin-bottom: 3px;
+            text-align: center;
+            text-transform: uppercase;
+            width: 80%;
+        }
+        .dotted-instructions {
+            border-top: 2px dotted black;
+            clear: both;
+            color: black;
+            font-size: 10px;
+            height: 11px;
+            line-height: 11px;
+            margin: 0.25cm 0;
+            padding-top: 6px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .footer-advise {
+            font-size: 7pt;
+            margin: 0 auto;
+            width: 98%;
+        }
+        .footer-title {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .form-title,
+        .privacidad {
+            background-color: black;
+            color: white;
+            font-size: 10pt;
+            margin: 0.5cm 0 0.25cm;
+            padding: 0.1cm 0;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .privacidad {
+            font-size: 7pt;
+            margin-bottom: 0;
+            margin-top: 0.25cm;
+        }
+        .fecha {
+            font-size: 7pt;
+            margin-bottom: 0.25cm 0;
+            padding-right: 0.25cm;
+            text-align: right;
+            vertical-align: middle;
+        }
+        .fecha:before {
+            content: '--  ';
+        }
+        .fecha:after {
+            content: '  --';
+        }
+        .generic-input {
+            border: 2px solid black;
+            border-radius: 6px;
+            font-weight: bold;
+            min-height: 23px;
+            line-height: 23px;
+            margin-top: 3px;
+            padding: 4px 8px;
+        }
+        .img-div {
+            height: 2.5cm;
+            padding: 0.5cm 0;
+            width: 100%;
+        }
+        .img-div img {
+            padding-left: 0.35cm;
+            width: 85%;
+        }
+        .inputs {
+            width: 100%;
+            margin-bottom: 3px;
+        }
+        .instructions {
+            font-size: 10.5px;
+            line-height: 130%;
+            margin: 0 auto;
+            margin-bottom: 6px;
+            text-align: left;
+            width: 98%;
+        }
+        .main-body {
+            width: 100%;
+        }
+        .sign-title {
+            bottom: 4px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            font-size: 14px;
+        }
+        .subtitle-input {
+            display: block;
+            float: right;
+            font-size: 11px;
+            margin-top: 4px;
+            margin-bottom: 5px;
+            width: 90%;
+        }
+        .title-input {
+            font-size: 11px;
+            clear: both;
+            margin-bottom: 4px;
+            width: 100%;
+        }
+        .title-input .num {
+            font-size: 14px;
+        }
+        .dashed-input {
+            border-bottom: 2px dotted black;
+            border-top: 2px dotted black;
+            overflow: hidden;
+            padding: 4px 0;
+        }
+        .dashed-input strong {
+            clear: both;
+            display: block;
+            text-align: center;
+        }
+        .underline-input {
+            height: 20px;
+            border-bottom: 2px solid black;
+        }
+        .options-ctn {
+            clear: both;
+            margin: 4px 0;
+        }
+        .option-ctn {
+            float: left;
+            line-height: 18px;
+            margin-left: -9px;
+            text-align: center;
+            width: 50%;
+        }
+        .option-check {
+            border: 2px solid black;
+            border-radius: 6px;
+            display: inline-block;
+            height: 18px;
+            margin-left: 10px;
+            width: 18px;
+        }
+        .option-label {
+            font-weight: bold;
+            line-height: 18px;
+            vertical-align: top;
+            display: inline-block;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+<div class="main-body">
+    <header>
+        <div class="img-div">
+            <img src="/public/img/logo/moneyexpress_bw.svg" alt="MoneyExpress logo">
+        </div>
+        <div class="company-name">
+            <strong>
+                Sistema automatizado Money Express®️<br>
+                Todos los derechos reservados 2024					</strong>
+        </div>
+    </header>
+    <div class="form-title">
+        <strong>DATOS DE USUARIO</strong>
+    </div>
+    <div class="instructions">
+        <strong>
+            Favor de leer y completar la información que se presenta a continuación. Garantizamos la protección y buen manejo de la información que aquí se presente.				</strong>
+    </div>
+    <div class="inputs">
+        <div class="title-input dashed-input">
+            <strong>¿Es tuyo el dinero que vas a cambiar?</strong>
+            <div class="options-ctn">
+                <div class="option-ctn">
+                    <span class="option-check"></span>
+                    <span class="option-label">SÍ</span>
+                </div>
+                <div class="option-ctn">
+                    <span class="option-check"></span>
+                    <span class="option-label">NO</span>
+                </div>
+            </div>
+            <strong>Si seleccionaste NO, deberá presentarse el dueño del dinero para realizar la operación.</strong>
+        </div>
+        <div class="title-input">
+            <strong><span class="num">1)</span> Nombre completo:</strong>
+            <div class="generic-input"></div>
+        </div>
+        <div class="title-input">
+            <strong><span class="num">2)</span> ¿En qué ciudad naciste?:</strong>
+            <div class="generic-input"></div>
+        </div>
+        <div class="title-input">
+            <strong><span class="num">3)</span> Estado civil:</strong>
+            <div class="generic-input"></div>
+        </div>
+        <div class="title-input">
+            <strong><span class="num">4)</span> Correo electrónico (en caso de tener uno):</strong>
+            <div class="generic-input"></div>
+        </div>
+        <div class="title-input">
+            <strong><span class="num">5)</span> Número de Identificación Fiscal (RFC / SSN):</strong>
+            <div class="generic-input">
+
+            </div>
+        </div>
+        <div class="title-input">
+            <strong><span class="num">6)</span> ¿A qué te dedicas?:</strong>
+            <div class="generic-input"></div>
+            <div class="subtitle-input">
+                <strong><span class="num">a)</span> ¿En dónde trabajas?:<br>Si eres estudiante, ama de casa o jubilado, escribe el nombre de la persona que te regaló el dinero.</strong>
+                <div class="generic-input"></div>
+            </div>
+        </div>
+        <div class="title-input">
+            <strong><span class="num">7)</span> Teléfono(s): (Obligatorio al menos uno)</strong>
+            <div class="cellphone-components">
+                <div class="cellphone-title">
+                    <strong>Casa:</strong>
+                </div>
+                <div class="cellphone-inputs">
+                    <div class="cellphone-input"></div>
+                </div>
+            </div>
+            <div class="cellphone-components">
+                <div class="cellphone-title">
+                    <strong>Celular:</strong>
+                </div>
+                <div class="cellphone-inputs">
+                    <div class="cellphone-input"></div>
+                </div>
+            </div>
+            <div class="cellphone-components">
+                <div class="cellphone-title">
+                    <strong>Oficina:</strong>
+                </div>
+                <div class="cellphone-inputs">
+                    <div class="cellphone-input"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="title-input">
+        <strong><span class="num">8)</span> ¿Vives en el domicilio declarado en el documento de identificación?</strong>
+        <div class="options-ctn cf">
+            <div class="option-ctn">
+                <span class="option-check"></span>
+                <span class="option-label">SÍ</span>
+            </div>
+            <div class="option-ctn">
+                <span class="option-check"></span>
+                <span class="option-label">NO</span>
+            </div>
+        </div>
+        <strong>En caso de NO, favor de presentar un comprobante de domicilio válido.</strong>
+    </div>
+    <div class="dotted-instructions">
+        <strong>Doblar formato en ésta línea</strong>
+    </div>
+    <div class="title-input cf">
+        <strong><span class="num">9)</span> ¿Qué servicio necesitas?:</strong>
+        <div class="checkbox-inputs">
+            <div class="checkbox-input"></div>
+            <div class="checkbox-text">
+                <strong>Necesito pesos</strong>
+            </div>
+        </div>
+        <div class="checkbox-inputs">
+            <div class="checkbox-input"></div>
+            <div class="checkbox-text">
+                <strong>Necesito dólares</strong>
+            </div>
+        </div>
+        <div class="checkbox-inputs">
+            <div class="checkbox-input"></div>
+            <div class="checkbox-text">
+                <strong>Necesito ambos</strong>
+            </div>
+        </div>
+    </div>
+    <div class="title-input">
+        <strong><span class="num">10)</span> ¿Cuántas veces cambias al mes?</strong>
+        <div class="generic-input"></div>
+    </div>
+    <div class="title-input">
+        <strong><span class="num">11)</span> ¿Qué cantidad ocupas al mes?: (Sólo uno)</strong>
+        <div class="checkbox-inputs">
+            <div class="checkbox-input"></div>
+            <div class="checkbox-text">
+                <strong>Menos de 3,000 Dólares</strong>
+            </div>
+        </div>
+        <div class="checkbox-inputs">
+            <div class="checkbox-input"></div>
+            <div class="checkbox-text">
+                <strong>De 3,000 a 10,000 Dólares</strong>
+            </div>
+        </div>
+        <div class="checkbox-inputs">
+            <div class="checkbox-input"></div>
+            <div class="checkbox-text">
+                <strong>Más de 10,000 Dólares</strong>
+            </div>
+        </div>
+    </div>
+    <div class="title-input">
+        <strong><span class="num">12)</span> El dinero proviene de: (Sólo uno)
+        </strong>
+        <div class="checkbox-inputs">
+            <div class="checkbox-input"></div>
+            <div class="checkbox-text">
+                <strong>De mi negocio y/u ocupación.</strong>
+            </div>
+        </div>
+        <div class="checkbox-inputs">
+            <div class="checkbox-input"></div>
+            <div class="checkbox-text">
+                <strong>De otra actividad y/o motivo.</strong>
+            </div>
+        </div>
+    </div>
+    <div class="title-input">
+        <strong>Describir detalladamente: (Obligatorio)</strong>
+        <div class="big-input"></div>
+    </div>
+    <div class="title-input">
+        <strong><span class="num">13)</span> El dinero lo usarás para: (Sólo uno)</strong>
+        <div class="checkbox-inputs">
+            <div class="checkbox-input"></div>
+            <div class="checkbox-text">
+                <strong>Mi negocio y/u ocupación</strong>
+            </div>
+        </div>
+        <div class="checkbox-inputs">
+            <div class="checkbox-input"></div>
+            <div class="checkbox-text">
+                <strong>Para otra actividad y/o motivo</strong>
+            </div>
+        </div>
+    </div>
+    <div class="title-input">
+        <strong>Describir detalladamente: (Obligatorio)</strong>
+        <div class="big-input"></div>
+    </div>
+    <div class="title-input">
+        <div class="big-input">
+            <div class="sign-title">
+                <strong>FIRMA (No salir del recuadro)</strong>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-title">
+            <strong>FAVOR DE ENTREGAR AL CAJERO</strong>
+        </div>
+        <div class="footer-advise">
+            <strong>
+                "DECLARO BAJO PROTESTA DE DECIR VERDAD, LA AUTENTICIDAD DE LA INFORMACIÓN Y						DOCUMENTACIÓN PROPORCIONADA AL CENTRO CAMBIARIO, ASÍ COMO QUE LOS RECURSOS QUE						OPERO Y OPERARÉ, Y SU ORIGEN, MANEJO O DESTINO NO SE ENCUENTRAN RELACIONADOS CON						OPERACIONES QUE PUDIERAN FAVORECER, PRESTAR AYUDA, AUXILIO O COOPERACIÓN DE						CUALQUIER ESPECIE PARA LA COMISIÓN DE LOS DELITOS PREVISTOS EN LOS ARTÍCULOS 400 BIS						Y/O 139 QUATER DEL CÓDIGO PENAL FEDERAL (OPERACIONES CON RECURSOS DE PROCEDENCIA						ILÍCITA Y/O FINANCIAMIENTO AL TERRORISMO)."						<br>
+            </strong>
+        </div>
+        <p class="fecha">IMPRESO EN: <strong>20/12/2024</strong></p>
+        <p class="privacidad"><strong>AVISO DE PRIVACIDAD EN: WWW.MONEYEXPRESS.IO</strong></p>
+    </footer>
+</div>
+
+</body>
