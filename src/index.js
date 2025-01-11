@@ -7,6 +7,11 @@ class Bridge {
         this.webSocketManager.connect();
     }
 
+    sendKey(publicKey) {
+        const message = {type: "publicKey", data: publicKey};
+        this.webSocketManager.sendMessage(message);
+    }
+
     print(configs, html)  {
         const message = { type: 'printFile', data: { selectedConfigs: configs, htmlContent: html } };
         this.webSocketManager.sendMessage(message);

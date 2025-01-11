@@ -42,6 +42,8 @@ class WebSocketManager {
             console.log('Print status:', message.data);
         } else if (message.type === 'portMessageStatus') {
             console.log('Port message status:', message.data);
+        } else if (message.type === 'encryptedToken') {
+            console.log('Encrypted token from server:', message.data);
         }
     }
 
