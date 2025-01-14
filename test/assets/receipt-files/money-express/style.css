@@ -1,117 +1,116 @@
+@page {
+    margin: 0;
+    size: 2.8in 22in;
+}
 
-        @page {
-            margin-top: 0cm;
-            margin-left: 0cm;
-            margin-right: 0cm;
-            margin-bottom: 0cm;
-        }
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-size: 62.5%;
+}
+body {
+    font-family: Sans-serif;
+    height: 100%;
+}
+footer {
+    clear: both;
+    text-align: center;
+}
 
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
-        body {
-            font-family: Arial, Sans-serif;
-            height: 100%;
-            width: 7.2cm;
-        }
-        footer {
-            clear: both;
-            text-align: center;
-        }
+label {
+    line-height: 1.2;
+}
 
-        .company-name {
-            font-size: 6.35pt;
-            margin: 0 auto;
-            margin-bottom: 3px;
-            text-align: center;
-            text-transform: uppercase;
-            width: 80%;
-        }
+.company-name {
+    font-size: 6.35pt;
+    margin: 0 auto;
+    margin-bottom: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 80%;
+}
+.company-name p {
+    margin: 0;
+}
 
-        .ticket-font-amount {
-            font-size: 8pt;
-            margin: 0 auto;
-            font-weight: bold;
-            /*width: 80%;*/
-        }
+.ticket-font-amount {
+    font-size: 8pt;
+    margin: 0 auto;
+}
 
-        .ticket-font-amount-change {
-            font-size: 10pt;
-            margin: 0 auto;
-            font-weight: bold;
-        }
+.ticket-font-amount-change {
+    font-size: 1.5rem;
+    margin: 0 auto;
+}
 
-        .form-title,
-        .privacidad {
-            background-color: black;
-            color: white;
-            font-size: 10pt;
-            padding: 0.1cm 0;
-            text-align: center;
-            vertical-align: middle;
-        }
+.ticket-box-change {
+    font-weight: bold;
 
+}
 
-        .img-div {
-            height: 2.5cm;
-            /*padding: 0.5cm 0;*/
-            width: 100%;
-        }
-        .img-div img {
-            padding-left: 0.35cm;
-            width: 85%;
-        }
-        .inputs {
-            width: 100%;
-            margin-bottom: 3px;
-        }
-        .main-body {
-            width: 100%;
-        }
+.form-title{
+    background-color: black;
+    color: white;
+    font-size: 8pt;
+    padding: 2pt 0;
+    text-align: center;
+    vertical-align: middle;
+}
 
-        .title-input {
-            font-size: 11px;
-            clear: both;
-            margin-bottom: 4px;
-            width: 100%;
-        }
-        .title-input .num {
-            font-size: 14px;
-        }
+.img-div {
+    height: 2.5cm;
+    width: 100%;
+}
+.img-div img {
+    padding-left: 0.35cm;
+    width: 85%;
+}
+.inputs {
+    width: 100%;
+    margin-bottom: 3px;
+}
+.main-body {
+    width: 100%;
+}
 
-        .dashed-input strong {
-            clear: both;
-            display: block;
-            text-align: center;
-        }
+.title-input {
+    font-size: 11px;
+    clear: both;
+    width: 100%;
+}
 
-        .solid-input {
-            border-bottom: 2px solid black;
-            overflow: hidden;
-            padding: 2px 0;
-        }
+.row .label, .row .value {
+    display: inline-block;
+    width: 49%;
+    text-align: right;
+}
+.row, .bottom-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1pt;
+}
+.bottom-row {
+    margin-top: 0.1cm;
+}
+.footer-advise {
+    font-size: 5.3pt;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+}
+.footer-advise span {
+    text-transform: uppercase;
+}
+.ticket-box {
+    border-bottom: 0.5px solid black;
+    padding: 2pt 0; 
+}
 
-        .row .label, .row .value {
-            display: inline-block;
-            width: 49%; /* Para tomar en cuenta algún relleno/margen que puedas tener */
-            text-align: right;
-        }
-        .row {
-            display: flex;
-            align-items: center; /* Centra verticalmente el contenido de la fila */
-            justify-content: space-between; /* Distribuye el espacio igualmente entre los elementos de la fila */
-        }
-        .footer-advise {
-            font-size: 5.6pt;
-            margin: 0 auto;
-            width: 98%;
-            text-align: left;
-        }
-        .custom-row .label {
-            text-align: left;
-        }
-        .custom-row .value {
-            text-align: right;
-        }
+#formatted-date {
+    text-transform: lowercase;
+}
+.ad-image {
+    width: 100%;
+}

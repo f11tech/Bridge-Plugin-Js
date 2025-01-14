@@ -4,20 +4,24 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BRIDGE Client</title>
+        <link rel="stylesheet" href="css/style.css">
         <script src="../dist/bridge.min.js"></script>
     </head>
 
     <body>
-        <h1>BRIDGE Client</h1>
-
-        <!-- Buttons -->
+    <h1>BRIDGE Client</h1>
+    <form>
         <input type="text" id="configNames" placeholder="Config Names">
         <button id="btn-print-receipt">Print Receipt</button>
+
         <input type="text" id="messageA" placeholder="Message A">
         <input type="text" id="messageB" placeholder="Message B">
         <button id="btn-send-message">Send</button>
-        <button id="btn-close-connection">Close Connection</button>
 
-        <script type="module" src="js/script.js"></script>
+        <button id="btn-close-connection">Close Connection</button>
+    </form>
+
+    <script type="module" src="js/script.js"></script>
     </body>
+
 </html>

@@ -1,0 +1,27 @@
+{
+    "data": {
+        "operation_type": "buy",
+        "rate_used": 20.02,
+        "foreign_amount": 900.00,
+        "base_amount": 18018,
+        "amount_received": 900.00,
+        "amount_delivered": 0.00,
+        "foreign_currency_code": "USD",
+        "created_at": "2024-01-01T12:34:56",
+        "consecutive": "BO10030225270"
+    },
+    "deviceData": {
+        "ticket_type": "ticket_image",
+        "branch": {
+            "address": "Av. Madero 894, Zona Centro, Tijuana BC, CP 22000",
+            "cashier_number": "1301",
+            "company": {
+                "register_number": "20316",
+                "register_date": "2011-11-1",
+                "legal_name": "Centro Cambiario Multiservicios Boston SA de CV",
+                "address": "Paseo de los Héroes 10231-301-50, Zona Urbana Río, Tijuana BC, CP 22010",
+                "rfc": "CCM1110076F1"
+            }
+        }
+    }
+}

@@ -5,124 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ticket</title>
-    <style>
-        @page {
-            margin-top: 0cm;
-            margin-left: 0cm;
-            margin-right: 0cm;
-            margin-bottom: 0cm;
-        }
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
-        body {
-            font-family: Arial, Sans-serif;
-            height: 100%;
-            width: 7.2cm;
-        }
-        footer {
-            clear: both;
-            text-align: center;
-        }
-
-        .company-name {
-            font-size: 6.35pt;
-            margin: 0 auto;
-            margin-bottom: 3px;
-            text-align: center;
-            text-transform: uppercase;
-            width: 80%;
-        }
-
-        .ticket-font-amount {
-            font-size: 8pt;
-            margin: 0 auto;
-            font-weight: bold;
-            /*width: 80%;*/
-        }
-
-        .ticket-font-amount-change {
-            font-size: 10pt;
-            margin: 0 auto;
-            font-weight: bold;
-        }
-
-        .form-title,
-        .privacidad {
-            background-color: black;
-            color: white;
-            font-size: 10pt;
-            padding: 0.1cm 0;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-
-        .img-div {
-            height: 2.5cm;
-            /*padding: 0.5cm 0;*/
-            width: 100%;
-        }
-        .img-div img {
-            padding-left: 0.35cm;
-            width: 85%;
-        }
-        .inputs {
-            width: 100%;
-            margin-bottom: 3px;
-        }
-        .main-body {
-            width: 100%;
-        }
-
-        .title-input {
-            font-size: 11px;
-            clear: both;
-            margin-bottom: 4px;
-            width: 100%;
-        }
-        .title-input .num {
-            font-size: 14px;
-        }
-
-        .dashed-input strong {
-            clear: both;
-            display: block;
-            text-align: center;
-        }
-
-        .solid-input {
-            border-bottom: 2px solid black;
-            overflow: hidden;
-            padding: 2px 0;
-        }
-
-        .row .label, .row .value {
-            display: inline-block;
-            width: 49%; /* Para tomar en cuenta algún relleno/margen que puedas tener */
-            text-align: right;
-        }
-        .row {
-            display: flex;
-            align-items: center; /* Centra verticalmente el contenido de la fila */
-            justify-content: space-between; /* Distribuye el espacio igualmente entre los elementos de la fila */
-        }
-        .footer-advise {
-            font-size: 5.6pt;
-            margin: 0 auto;
-            width: 98%;
-            text-align: left;
-        }
-        .custom-row .label {
-            text-align: left;
-        }
-        .custom-row .value {
-            text-align: right;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="main-body">
@@ -131,67 +14,56 @@
             <img src="https://caja.dolarexpress.com/public/img/logo/moneyexpress_bw.svg" alt="MoneyExpress logo">
         </div>
         <div class="company-name">
-            <strong>
-                SISTEMA AUTOMATIZADO MONEY EXPRESS
-                TODOS LOS DERECHOS RESERVADOS 2024
-            </strong>
+            <p>
+                SISTEMA AUTOMATIZADO MONEY EXPRESS ®<br>
+                TODOS LOS DERECHOS RESERVADOS 2025
+            </p>
         </div>
     </header>
     <div class="form-title">
-        <strong>OPERACION: ${is_buy ? "COMPRA" : "VENTA"} ${data.foreign_currency_code}</strong>
+        <strong id="operation-title"></strong>
     </div>
     <div class="inputs">
-        <div class="title-input solid-input">
+        <div class="title-input solid-input ticket-box">
             <div class="row ticket-font-amount">
-                <div class="label">TIPO DE CAMBIO </div>
-                <div class="value">${exchange_rate} MXN</div>
+                <div class="label">TIPO DE CAMBIO</div>
+                <div class="value" id="exchange-rate"></div>
             </div>
             <div class="row ticket-font-amount">
                 <div class="label">MONTO</div>
-                <div class="value">${"$" + amount.toLocaleString("en-US", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                    })} ${currency_code}</div>
+                <div class="value" id="amount"></div>
             </div>
             <div class="row ticket-font-amount">
                 <div class="label">RECIBIDO</div>
-                <div class="value">${"$" + amount_received.toLocaleString("en-US", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                    })} ${currency_code}</div>
+                <div class="value" id="amount-received"></div>
             </div>
         </div>
-        <div class="title-input solid-input">
+        <div class="title-input solid-input ticket-box ticket-box-change">
             <div class="row ticket-font-amount-change">
                 <div class="label">ENTREGADO</div>
-                <div class="value">${"$" + amount_delivered.toLocaleString("en-US", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                    })} ${currency_code_inverting}</div>
+                <div class="value" id="amount-delivered"></div>
             </div>
             <div class="row ticket-font-amount-change">
                 <div class="label">CAMBIO</div>
-                <div class="value">${"$" + amount_change.toLocaleString("en-US", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                    })} ${currency_code}</div>
+                <div class="value" id="amount-change"></div>
             </div>
         </div>
-        <div class="title-input">
-            <div class="row custom-row">
+        <div class="title-input solid-input">
+            <div class="bottom-row">
                 <div class="label">USUARIO</div>
                 <div class="value">PÚBLICO EN GENERAL</div>
             </div>
         </div>
     </div>
     <footer>
-        <div class="footer-advise" style="text-align: justify;">
-            <strong>
-                La siguiente operación fue realizada en ${deviceData.branch.company.legal_name} ubicada en ${deviceData.branch.address} con RFC ${deviceData.branch.company.rfc}, cuya matriz se encuentra en ${deviceData.branch.company.address} el dia ${formattedDate}. Folio de operacion: ${data.consecutive}. Registro vigente ${generalDateFormatted} número ${deviceData.branch.company.register_number} otorgado por la CNBV, con fecha de ${generalDateFormatted}. Este no es un comprobante fiscal.
-                <br>
-            </strong>
-        </div>
+        <p class="footer-advise">
+            La siguiente operación fue realizada en <span id="branch-legal-name"></span> ubicada en <span id="branch-address"></span> con RFC <span id="branch-rfc"></span>, cuya matriz se encuentra en <span id="branch-company-address"></span> el <br>día <span id="formatted-date"></span> por el cajero <span id="branch-cashier-number"></span>. Folio de operacion: <br><span id="data-consecutive"></span>. Registro vigente número <span id="branch-company-register-number"></span> otorgado por la CNBV, con fecha de <span id="general-date"></span>. Este no es un comprobante fiscal.
+        </p>
     </footer>
+    <div>
+        <br><img class="ad-image" src="ad.jpg">
+    </div>
 </div>
+<script src="script.js"></script>
 </body>
 </html>
