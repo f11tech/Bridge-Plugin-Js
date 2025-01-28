@@ -41,6 +41,8 @@ async function generateKeyPair() {
         const privateKey = await crypto.subtle.exportKey("pkcs8", keyPair.privateKey);
         const privateKeyPem = convertArrayBufferToPem(privateKey, "PRIVATE KEY");
 
+        console.log("Private key: ", privateKeyPem);
+
         // Store the keys in localStorage
         localStorage.setItem("publicKey", publicKeyPem);
         localStorage.setItem("privateKey", privateKeyPem);
@@ -60,7 +62,9 @@ function convertArrayBufferToPem(buffer, keyType) {
 }
 
 const printReceiptButton = document.getElementById("btn-print-receipt");
-printReceiptButton.addEventListener("click", async () => {
+printReceiptButton.addEventListener("click", async (e) => {
+
+    e.preventDefault();
     const input = document.getElementById("configNames").value;
     const filePath = "assets/receipt-files/formato/";
     const fileName = "receipt.html";
@@ -87,7 +91,9 @@ printReceiptButton.addEventListener("click", async () => {
 });
 
 const sendMessageButton = document.getElementById("btn-send-message");
-sendMessageButton.addEventListener("click", async () => {
+sendMessageButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+
     const messageA = document.getElementById("messageA").value;
     const messageB = document.getElementById("messageB").value;
 
@@ -100,7 +106,9 @@ sendMessageButton.addEventListener("click", async () => {
 });
 
 const closeConnectionButton = document.getElementById("btn-close-connection");
-closeConnectionButton.addEventListener("click", async () => {
+closeConnectionButton.addEventListener("click", async (e) => {
+    e.preventDefault();
+
     try {
         disconnectClient();
     } catch (error) {

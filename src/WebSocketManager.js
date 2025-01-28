@@ -1,3 +1,5 @@
+import {decryptData} from "./Decryption";
+
 (function () {
     class WebSocketManager {
         constructor(port = 51510) {
@@ -38,13 +40,13 @@
 
         handleMessage(message) {
             console.log('Handling message:', message);
-
-            if (message.type === 'printStatus') {
+            if (message.type === 'encryptedToken') {
+                const decrypted = decryptData(message.data);
+                console.log("Decrypted data:", decrypted);
+            } else if (message.type === 'printStatus') {
                 console.log('Print status:', message.data);
             } else if (message.type === 'portMessageStatus') {
                 console.log('Port message status:', message.data);
-            } else if (message.type === 'encryptedToken') {
-                console.log('Encrypted token from server:', message.data);
             }
         }
 
