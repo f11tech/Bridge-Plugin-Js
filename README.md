@@ -115,6 +115,25 @@ bridge.disconnect();
 
 ---
 
+## Included Resources for Printing Service
+The project includes several pre-configured receipt templates for testing, located in the receipt-files folder. These templates are dynamically populated and printed within the application.
+
+- **formato**
+
+A receipt template designed as a form with fields to be filled in by the client.
+
+- **hacienda-soler:**
+
+A sample receipt for a business that handles room rentals. It includes a detailed breakdown of the client's expenses and the total amount due.
+
+- **money-express:**
+
+A sample receipt for a currency exchange service, providing an overview of the transaction details.
+
+These templates serve as a foundation for dynamically generating printable receipts within the application.
+
+---
+
 ## Example Usage
 
 ```js
@@ -130,7 +149,6 @@ bridge.sendToDisplay("Hello", "World");
 
 bridge.disconnect();
 ```
-
 ---
 
 ## License
