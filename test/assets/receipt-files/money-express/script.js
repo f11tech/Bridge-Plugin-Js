@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const amount_change = receiptData.data.amount_delivered;
         const currency_code = is_buy ? receiptData.data.foreign_currency_code : "MXN";
 
-        const date = new Date(receiptData.data.created_at);
         const formattedDate = new Date(receiptData.data.created_at).toLocaleString("es-ES", {
                 day: "2-digit", month: "2-digit", year: "numeric",
                 hour: "2-digit", minute: "2-digit", second: "2-digit"

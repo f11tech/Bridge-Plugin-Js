@@ -61,13 +61,60 @@ function convertArrayBufferToPem(buffer, keyType) {
     return pemString;
 }
 
+function convertBlobToBase64(blob) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+    });
+}
+
+function getReceiptData() {
+    const receiptData = {
+        data: {
+            operation_type: document.getElementById("operation_type").text,
+            rate_used: parseFloat(document.getElementById("rate_used").value),
+            foreign_amount: parseFloat(document.getElementById("foreign_amount").value),
+            base_amount: parseFloat(document.getElementById("base_amount").value),
+            amount_received: parseFloat(document.getElementById("amount_received").value),
+            amount_delivered: parseFloat(document.getElementById("amount_delivered").value),
+            foreign_currency_code: document.getElementById("foreign_currency_code").text,
+            created_at: document.getElementById("created_at").text,
+            consecutive: document.getElementById("consecutive").text,
+            deviceData: {
+                ticket_type: document.getElementById("ticket_type").text,
+                branch: {
+                    address: document.getElementById("branch_address").text,
+                    cashier_number: document.getElementById("cashier_number").text,
+                    company: {
+                        register_number: document.getElementById("register_number").text,
+                        register_date: document.getElementById("register_date").text,
+                        legal_name: document.getElementById("legal_name").text,
+                        address: document.getElementById("company_address").text,
+                        rfc: document.getElementById("rfc").text
+                    }
+                }
+            }
+        }
+    };
+
+    console.log("Formatted Receipt Data:", receiptData);
+
+    // Convert JSON data to string and embed it in the receipt
+    return JSON.stringify(receiptData);
+}
+
 const printReceiptButton = document.getElementById("btn-print-receipt");
 printReceiptButton.addEventListener("click", async (e) => {
-
     e.preventDefault();
+
     const input = document.getElementById("configNames").value;
     const filePath = "assets/receipt-files/money-express/";
     const fileName = "receipt.html";
+    const cssFileName = "style.css";
+    const jsFileName = "script.js";
+    const dataFilePath = "data/ticket-data.json";
 
     if (input) {
         configs = input.split(',').map(item => item.trim());
@@ -76,26 +123,30 @@ printReceiptButton.addEventListener("click", async (e) => {
     try {
         console.log(filePath + fileName);
         let response = await fetch(filePath + fileName);
-
         let html = await response.text();
 
-        const cssResponse = await fetch(filePath + "style.css");
+        const cssResponse = await fetch(filePath + cssFileName);
         const css = await cssResponse.text();
-
         html = html.replace("</head>", `<style>${css}</style></head>`);
 
-
-
-        const jsResponse = await fetch(filePath + "script.js");
+        const jsResponse = await fetch(filePath + jsFileName);
         let js = await jsResponse.text();
         console.log(js);
 
-        const dataResponse = await fetch(filePath + "data/ticket-data.json");
+        const dataResponse = await fetch(filePath + dataFilePath);
         const data = await dataResponse.json();
         js = js.replace("const receiptData = data;", `const receiptData = ${JSON.stringify(data)};`);
 
         html = html.replace("</body>", `<script>${js}</script></body>`);
 
+        const imagePath = filePath + "ad.jpg";
+        const imageResponse = await fetch(imagePath);
+        const imageBlob = await imageResponse.blob();
+        const imageBase64 = await convertBlobToBase64(imageBlob);
+
+        html = html.replace("<img>", `<img src="${imageBase64}" alt="Receipt Logo" class="ad-image">`);
+
+        console.log(html);
 
         console.log(html);
         bridge.print(configs, html);
