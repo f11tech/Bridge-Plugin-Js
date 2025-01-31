@@ -18,8 +18,8 @@
             this.webSocketManager.sendMessage(message);
         }
 
-        sendToDisplay(var1, var2) {
-            const message = { type: 'portMessage', data: { messageA: var1, messageB: var2 } };
+        sendToDisplay(var1, var2, port) {
+            const message = { type: 'portMessage', data: { messageA: var1, messageB: var2, selectedPort: port } };
             this.webSocketManager.sendMessage(message);
         }
 
