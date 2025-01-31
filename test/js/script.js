@@ -66,7 +66,7 @@ printReceiptButton.addEventListener("click", async (e) => {
 
     e.preventDefault();
     const input = document.getElementById("configNames").value;
-    const filePath = "assets/receipt-files/formato/";
+    const filePath = "assets/receipt-files/money-express/";
     const fileName = "receipt.html";
 
     if (input) {
@@ -75,15 +75,30 @@ printReceiptButton.addEventListener("click", async (e) => {
     }
     try {
         console.log(filePath + fileName);
-        const response = await fetch(filePath + fileName);
+        let response = await fetch(filePath + fileName);
 
-        if (!response.ok) {
-            console.error("Failed to load receipt HTML file:", response.statusText);
-            return;
-        }
+        let html = await response.text();
 
-        let receiptHtml = await response.text();
-        bridge.print(configs, receiptHtml);
+        const cssResponse = await fetch(filePath + "style.css");
+        const css = await cssResponse.text();
+
+        html = html.replace("</head>", `<style>${css}</style></head>`);
+
+
+
+        const jsResponse = await fetch(filePath + "script.js");
+        let js = await jsResponse.text();
+        console.log(js);
+
+        const dataResponse = await fetch(filePath + "data/ticket-data.json");
+        const data = await dataResponse.json();
+        js = js.replace("const receiptData = data;", `const receiptData = ${JSON.stringify(data)};`);
+
+        html = html.replace("</body>", `<script>${js}</script></body>`);
+
+
+        console.log(html);
+        bridge.print(configs, html);
         console.log("Print request sent.");
     } catch (error) {
         console.error("Error printing receipt:", error);
