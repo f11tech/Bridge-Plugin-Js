@@ -89,17 +89,18 @@ bridge.print(["config1", "config2"], receiptHTML);
 
 ---
 
-### `sendToDisplay(var1, var2)`
+### `sendToDisplay(buy, sell, port)`
 
-Sends a message to an external display.
+Sends a message to an external display. The messages format (length and special characters) is managed by BRIDGE.
 
 **Parameters:**
-- `var1` *(string)* – The first message string.
-- `var2` *(string)* – The second message string.
+- `buy` *(string)* – The first message string (buy rate).
+- `sell` *(string)* – The second message string (sell rate).
+- `port` *(array of strings)* – A list of serial ports where messages will be sent
 
 **Usage:**
 ```js
-bridge.sendToDisplay("Welcome", "Processing...");
+bridge.sendToDisplay("19.500", "20.00");
 ```
 
 ---
@@ -145,7 +146,7 @@ bridge.sendKey("your-public-key");
 const receiptHTML = "<html><body><h1>Receipt</h1></body></html>";
 bridge.print(["default"], receiptHTML);
 
-bridge.sendToDisplay("Hello", "World");
+bridge.sendToDisplay("20.50", "21.00");
 
 bridge.disconnect();
 ```
