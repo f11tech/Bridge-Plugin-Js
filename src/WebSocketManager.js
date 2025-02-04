@@ -1,4 +1,4 @@
-import {decryptData} from "./Decryption";
+import { decryptData } from "./Decryption";
 
 (function () {
     class WebSocketManager {

@@ -9,7 +9,7 @@
         }
 
         sendKey(publicKey) {
-            const message = {type: "publicKey", data: publicKey};
+            const message = { type: "publicKey", data: publicKey };
             this.webSocketManager.sendMessage(message);
         }
 

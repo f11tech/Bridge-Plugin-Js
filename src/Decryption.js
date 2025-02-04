@@ -22,7 +22,6 @@ export function decryptData(encryptedData) {
 
         return decryptedData;
     } catch (error) {
-        console.error("Decryption failed:", error);
         throw new Error("Failed to decrypt data: " + error.message);
     }
 }
