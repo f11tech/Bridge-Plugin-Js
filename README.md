@@ -50,7 +50,7 @@ Creates a new instance of the **BRIDGE Plugin** and initializes the WebSocket co
 
 ### `connect()`
 
-Establishes a WebSocket connection to the specified port.
+This function initializes a WebSocket connection to the specified port, allowing real-time communication between the client and the server. It must be called before sending any messages.
 
 **Usage:**
 ```js
@@ -61,7 +61,7 @@ bridge.connect();
 
 ### `sendKey(publicKey)`
 
-Sends a **public key** for secure communication.
+Transmits a **public key** to the server for secure communication. This is typically used for encryption, authentication, or establishing a secure session.
 
 **Parameters:**
 - `publicKey` *(string)* – The public key to be sent.
@@ -75,7 +75,7 @@ bridge.sendKey("your-public-key");
 
 ### `print(configs, html)`
 
-Sends an **HTML receipt** for printing with specified configurations.
+Sends an **HTML receipt** to be printed using a thermal printer. The function allows customization via configs, enabling different print settings.
 
 **Parameters:**
 - `configs` *(array of strings)* – A list of configuration settings for printing.
@@ -91,7 +91,7 @@ bridge.print(["config1", "config2"], receiptHTML);
 
 ### `sendToDisplay(buy, sell, port)`
 
-Sends a message to an external display. The messages format (length and special characters) is managed by BRIDGE.
+Sends formatted messages to an **external display**, such as an LED board, to show exchange rates, prices, or other real-time data. **BRIDGE** ensures that messages meet the display's formatting requirements.
 
 **Parameters:**
 - `buy` *(string)* – The first message string (buy rate).
@@ -100,14 +100,14 @@ Sends a message to an external display. The messages format (length and special 
 
 **Usage:**
 ```js
-bridge.sendToDisplay("19.500", "20.00");
+bridge.sendToDisplay("19.500", "20.00", ["COM3"]);
 ```
 
 ---
 
 ### `disconnect()`
 
-Closes the WebSocket connection.
+Terminates the WebSocket connection, freeing up resources and preventing unwanted communication after the session ends.
 
 **Usage:**
 ```js
@@ -146,7 +146,7 @@ bridge.sendKey("your-public-key");
 const receiptHTML = "<html><body><h1>Receipt</h1></body></html>";
 bridge.print(["default"], receiptHTML);
 
-bridge.sendToDisplay("20.50", "21.00");
+bridge.sendToDisplay("20.50", "21.00", ["COM1"]);
 
 bridge.disconnect();
 ```
