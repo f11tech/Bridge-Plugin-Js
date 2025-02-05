@@ -24,16 +24,24 @@ The **BRIDGE Plugin** provides a WebSocket-based communication layer for integra
    npm install
    ```
 
-3. Import the plugin into your project:
+3. **CDN Import (jsDelivr)**
+   
+   If you prefer to load the plugin via CDN, you can use jsDelivr:
+   ```js
+   <script src="https://cdn.jsdelivr.net/gh/f11tech/Bridge-Plugin-Js@latest/dist/bridge.min.js"></script>
+   ```
+   
+4. Import the plugin into your project:
    ```js
    const Bridge = require('./bridge');
    ```
 
-4. Initialize an instance:
+5. Initialize an instance:
    ```js
    const bridge = new Bridge();
    bridge.connect();
    ```
+
 
 ---
 
