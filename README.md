@@ -104,11 +104,16 @@ Sends formatted messages to an **external display**, such as an LED board, to sh
 **Parameters:**
 - `buy` *(string)* – The first message string (buy rate).
 - `sell` *(string)* – The second message string (sell rate).
-- `port` *(array of strings)* – A list of serial ports where messages will be sent
+- `port` *(array of strings, optional)* – A list of serial ports where messages will be sent.  
+  *If no port is provided, the message will be sent to every configured port in BRIDGE.*
 
 **Usage:**
 ```js
+// Send to a specific port
 bridge.sendToDisplay("19.500", "20.00", ["COM3"]);
+
+// Send to all configured ports
+bridge.sendToDisplay("19.500", "20.00");
 ```
 
 ---
