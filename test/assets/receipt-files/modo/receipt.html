@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODO Transaction</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<main>
+    <header>
+        <div class="img-div">
+            <img src="https://modo.exchange/assets/modo_logo-DKJMj5zX.png" alt="MODO logo">
+        </div>
+        <div class="company-data">
+            <h3 class="center-text uppercase">
+                GPOMCT Grupo Empresarial SA de CV <br>
+                10231 Paseo de los Héroes 301-60 <br>
+                Tijuana, B.C. 22010 <br>
+                Phone: 6646343590
+            </h3>
+        </div>
+    </header>
+
+    <section>
+        <div class="form-title">
+            <h1 class="form-title big-letters uppercase" id="operation-title">Transaction:</h1>
+        </div>
+
+        <div class="inputs">
+            <div class="title-input solid-input ticket-box ticket-box-transaction">
+                <div class="row ticket-font-amount">
+                    <div class="label uppercase">Currency</div>
+                    <div class="value" id="currency"></div>
+                </div>
+                <div class="row ticket-font-amount">
+                    <div class="label uppercase">Exchange Rate</div>
+                    <div class="value" id="exchange-rate"></div>
+                </div>
+                <div class="row ticket-font-amount">
+                    <div class="label uppercase">Amount</div>
+                    <div class="value" id="amount"></div>
+                </div>
+                <div class="row ticket-font-amount">
+                    <div class="label uppercase">Received</div>
+                    <div class="value" id="amount-received"></div>
+                </div>
+            </div>
+            <div class="title-input solid-input ticket-box ticket-box-change">
+                <div class="row ticket-font-amount-change">
+                    <div class="label uppercase">Paid</div>
+                    <div class="value" id="amount-delivered"></div>
+                </div>
+                <div class="row ticket-font-amount-change">
+                    <div class="label uppercase">Change</div>
+                    <div class="value" id="amount-change"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="form-title">
+            <h1 class="form-title big-letters uppercase center-text">Breakdown Received</h1>
+        </div>
+
+        <table class="received-bills">
+            <thead>
+            <div id="received-bills-header">
+                <h1 class="table-header uppercase" id="rb-header">Bills</h1>
+            </div>
+            </thead>
+
+            <tbody>
+            <tr>
+                <div>
+                    <div class="breakdown-table breakdown-bills" id="received-bills-box"> </div>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <table class="received-coins">
+            <thead>
+            <div id="received-coins-header">
+                <h1 class="table-header uppercase" id="rc-header">Coins</h1>
+            </div>
+            </thead>
+
+            <tbody>
+            <tr>
+                <div>
+                    <div class="breakdown-table" id="received-coins-box"></div>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="title-input solid-input ticket-box ticket-box-change">
+            <div class="ticket-font-amount-change">
+                <div class="label uppercase total" id="total-value-received">Total</div>
+            </div>
+            <div class="ticket-font-amount-change">
+                <div class="label total-text" id="total-text-received"></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="form-title">
+            <h1 class="form-title big-letters uppercase">Breakdown Paid</h1>
+        </div>
+
+        <table class="paid-bills">
+            <thead>
+            <div id="paid-bills-header">
+                <h1 class="table-header uppercase" id="pb-header">Bills</h1>
+            </div>
+            </thead>
+
+            <tbody>
+            <tr>
+                <div>
+                    <div class="breakdown-table" id="paid-bills-box"></div>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="paid-coins">
+            <thead>
+            <div id="paid-coins-header">
+                <h1 class="table-header uppercase" id="pc-header">Coins</h1>
+            </div>
+            </thead>
+
+            <tbody>
+            <tr>
+                <div>
+                    <div class="breakdown-table" id="paid-coins-box"></div>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="title-input solid-input ticket-box ticket-box-change">
+            <div class="ticket-font-amount-change">
+                <div class="label uppercase total" id="total-value-paid">Total</div>
+            </div>
+            <div class="ticket-font-amount-change">
+                <div class="label total-text"  id="total-text-paid"></div>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <div class="title-input solid-input">
+        <div class="bottom-row">
+            <div class="label">USER</div>
+            <div class="value">CONSUMER</div>
+        </div>
+    </div>
+
+    <div class="footer-advise">
+        <p>
+            This transaction was fulfilled in <span id="branch-legal-name"></span>, located at <span id="branch-address"></span> with Employer Identification Number of <span id="branch-employee-number"></span> on <span id="formatted-date"></span> by cashier number <span id="branch-cashier-number"></span>.
+            <br>Transaction ID: <span id="transaction-id"></span>.
+        </p>
+    </div>
+</footer>
+<div>
+    <br><img>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>
