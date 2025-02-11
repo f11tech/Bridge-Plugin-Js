@@ -51,17 +51,36 @@ The **BRIDGE Plugin** provides a WebSocket-based communication layer for integra
    bridge.connect();
    ```
 
-
 ---
 
 ## API Reference
 
 ### `constructor(port = 51510)`
 
-Creates a new instance of the **BRIDGE Plugin** and initializes the WebSocket connection on the specified port.
+Creates a new instance of **BRIDGE** and initializes the WebSocket connection on the specified port.
 
-**Parameters:**
+
+#### Port Configuration & Rules
+
+- By **default, the plugin connects on port** `51510`, which is the default WebSocket port for **BRIDGE Electron Service**. 
+- If **no port is specified**, it will automatically use `51510`. 
+- If a **custom port** is used, it must **match the port configured in BRIDGE Electron Service**, otherwise, the connection will fail. 
+  - **Changing the port in BRIDGE Plugin without updating BRIDGE Electron Service will result in connection issues.**
+
+
+#### Parameters
 - `port` *(optional, default: 51510)* – The port number used for WebSocket communication.
+  - ⚠️ **If modified, ensure the same port is set in BRIDGE Electron Service**
+
+
+#### Usage
+```js
+// Using the default port (51510)
+const bridge = new Bridge();
+
+// Using a custom port (Must match BRIDGE Electron Service configuration)
+const bridge = new Bridge(52000); // Ensure BRIDGE Electron Service also uses 52000
+```
 
 ---
 
@@ -69,7 +88,7 @@ Creates a new instance of the **BRIDGE Plugin** and initializes the WebSocket co
 
 This function initializes a WebSocket connection to the specified port, allowing real-time communication between the client and the server. It must be called before sending any messages.
 
-**Usage:**
+#### Usage
 ```js
 bridge.connect();
 ```
@@ -80,10 +99,10 @@ bridge.connect();
 
 Transmits a **public key** to the server for secure communication. This is typically used for encryption, authentication, or establishing a secure session.
 
-**Parameters:**
+#### Parameters
 - `publicKey` *(string)* – The public key to be sent.
 
-**Usage:**
+#### Usage:
 ```js
 bridge.sendKey("your-public-key");
 ```
@@ -143,7 +162,7 @@ Sends formatted messages to an **external display** connected to the BRIDGE Elec
 - The **BRIDGE Electron Service** manages the communication with the external display. 
 - The display **configuration (alias)** is stored within **BRIDGE Electron Service** and includes **port settings and formatting rules**.
 - Messages are sent based on the defined alias and port settings.
-- **Messages will not be sent if:
+- #### Messages will not be sent if:
   - The plugin is **not connected** to the **BRIDGE Electron Service**. 
   - The **display module is disabled** in the **BRIDGE Electron Service**. 
   - The **specified port does not exist** or is **not configured**.
