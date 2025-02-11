@@ -1,0 +1,228 @@
+@page {
+    margin: 0;
+    width: 2.8in;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 99%;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Arial, Sans-serif, serif;
+    height: 100%;
+    width: 100%;
+}
+
+/* Elements */
+
+h3 {
+    font-size: 0.85rem;
+    font-weight: normal;
+}
+
+label {
+    font-size: 1.1rem;
+}
+
+footer p {
+    font-size: 5.2pt;
+    font-weight: bold;
+}
+
+hr {
+    border-top: 2px dotted;
+    margin: 0;
+}
+
+footer {
+    border-top: 0.5px solid black;
+}
+
+table {
+    width: 90%;
+}
+thead {
+    text-align: center;
+}
+tbody {
+    width: 8px;
+    text-align: right;
+}
+td {
+    padding: 0;
+    margin: 0;
+    font-size: 8pt;
+    width: 40%;
+    text-align: right;
+    position: relative;
+}
+td p {
+    position: absolute;
+    right: 10px;
+    text-align: right;
+}
+
+/* Constants */
+
+.no-padding {
+    padding: 0;
+}
+.no-margin {
+    margin: 0;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.big-letters {
+    font-size: 1.3rem;
+}
+.important-letters {
+    font-size: 1.4rem;
+}
+
+.instructions {
+    margin: 0.2cm 0.1cm 2px;
+    line-height: 1.3;
+    font-size: 8pt;
+}
+
+/* Classes */
+
+.img-div {
+    width: 100%;
+    display: grid;
+}
+.img-div img {
+    padding-left: 0.35cm;
+    width: 85%;
+}
+
+.ticket-font-amount {
+    font-size: 8pt;
+    margin: 0 auto;
+}
+.ticket-font-amount-change {
+    font-size: 1.5rem;
+    margin: 0 auto;
+}
+.ticket-box-change {
+    font-weight: bold;
+}
+
+.form-title {
+    background-color: black;
+    color: white;
+    font-size: 8pt;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+    padding: 2px 0;
+}
+
+.inputs {
+    width: 100%;
+    margin: 6px 0 3px;
+    font-weight: bold;
+}
+.main-body {
+    width: 100%;
+}
+
+.title-input {
+    font-size: 11px;
+    clear: both;
+    width: 100%;
+}
+
+.ticket-box .row .label {
+    display: inline-block;
+    text-align: right;
+}
+.ticket-box-transaction .row .label {
+    width: 61%;
+}
+
+.ticket-box-change .row .label {
+    width: 47%;
+}
+
+.row, .bottom-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1pt 0;
+}
+.bottom-row {
+    margin: 3pt 0;
+}
+
+.breakdown-amount {
+    border-bottom: black solid 0.1pt;
+    display: inline-block;
+    width: 80px;
+}
+
+.footer-advise span {
+    text-transform: uppercase;
+}
+
+.ticket-box {
+    padding: 1pt 0;
+}
+
+.table-header {
+    text-align: center;
+    font-size: 8pt;
+    padding: 1px;
+    margin: 0.6rem 0 1rem;
+}
+
+#pc-header {
+    margin-top: 1rem;
+}
+
+.ticket-font-amount-change {
+    text-align: right;
+}
+
+.total {
+    padding-top: 4px;
+    font-size: 1.6rem;
+}
+
+.total-text {
+    font-size: 1.1rem;
+    padding: 2px 0 4px;
+}
+
+.breakdown-bills {
+    padding-bottom: 6px;
+}
+
+.breakdown-table {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+.breakdown-table div {
+    width: 50%;
+}
+.breakdown-table p {
+    margin: 2pt 0;
+    font-size: 8pt;
+    text-align: right;
+}
+
+.ad-image {
+    width: 100%;
+}

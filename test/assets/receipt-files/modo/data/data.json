@@ -1,0 +1,58 @@
+[
+  {
+    "operation_type": "buy",
+    "exchange_rate": 20.19,
+    "base_amount": 200.00,
+    "amount_received": 200.00,
+    "amount_delivered": 4038.00,
+    "amount_change": 0.00,
+    "breakdownReceived": {
+      "bills": { "$1": 1, "$2": 1,  "$5": 1, "$10": 2, "$20": 1, "$50": 1,  "$100": 1},
+      "coins": { "$1": 1, "¢50": 1, "¢25": 1, "¢10": 1, "¢5": 1, "¢1": 10 },
+      "total": 200.00
+    },
+    "breakdownPaid": {
+      "bills": { "$20": 1, "$500": 1 },
+      "coins": { "$1": 1, "$2": 1, "$5": 1, "$10": 1 },
+      "total": 4038.00
+    },
+    "device_data": {
+      "transaction_id": "GEO2030000281",
+      "transaction_date": "2024-01-01T12:34:56",
+      "employee_number": "GGE160802RXO",
+      "cashier_number": "E001",
+      "company": {
+        "legal_name": "GPOMCT Grupo Empresarial SA de CV",
+        "address": "10231 Paseo de los Héroes 301-50, Tijuana BC, 22010"
+      }
+    }
+  },
+  {
+    "operation_type": "sell",
+    "exchange_rate": 20.45,
+    "base_amount": 4090.00,
+    "amount_received": 4090.00,
+    "amount_delivered": 200.00,
+    "amount_change": 0.00,
+    "breakdownReceived": {
+      "bills": { "$20": 2, "$50": 1,  "$100": 7, "$200": 1, "$500": 4,  "$1,000": 1 },
+      "coins": { "$10": 10 },
+      "total": 4090.00
+    },
+    "breakdownPaid": {
+      "bills": { "$100": 2, "$500": 0 },
+      "coins": { "$1": 0, "¢50": 0, "¢25": 0, "¢10": 0, "¢5": 0, "¢1": 0 },
+      "total": 200
+    },
+    "device_data": {
+      "transaction_id": "GEO2030000281",
+      "transaction_date": "2025-30-01T11:40:08",
+      "employee_number": "GGE160802RXO",
+      "cashier_number": "E001",
+      "company": {
+        "legal_name": "GPOMCT Grupo Empresarial SA de CV",
+        "address": "10231 Paseo de los Héroes 301-50, Tijuana BC, 22010"
+      }
+    }
+  }
+]
