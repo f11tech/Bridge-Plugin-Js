@@ -24,16 +24,24 @@ The **BRIDGE Plugin** provides a WebSocket-based communication layer for integra
    npm install
    ```
 
-3. Import the plugin into your project:
+3. **CDN Import (jsDelivr)**
+   
+   If you prefer to load the plugin via CDN, you can use jsDelivr:
+   ```js
+   <script src="https://cdn.jsdelivr.net/gh/f11tech/Bridge-Plugin-Js@latest/dist/bridge.min.js"></script>
+   ```
+   
+4. Import the plugin into your project:
    ```js
    const Bridge = require('./bridge');
    ```
 
-4. Initialize an instance:
+5. Initialize an instance:
    ```js
    const bridge = new Bridge();
    bridge.connect();
    ```
+
 
 ---
 
@@ -50,7 +58,7 @@ Creates a new instance of the **BRIDGE Plugin** and initializes the WebSocket co
 
 ### `connect()`
 
-Establishes a WebSocket connection to the specified port.
+This function initializes a WebSocket connection to the specified port, allowing real-time communication between the client and the server. It must be called before sending any messages.
 
 **Usage:**
 ```js
@@ -61,7 +69,7 @@ bridge.connect();
 
 ### `sendKey(publicKey)`
 
-Sends a **public key** for secure communication.
+Transmits a **public key** to the server for secure communication. This is typically used for encryption, authentication, or establishing a secure session.
 
 **Parameters:**
 - `publicKey` *(string)* – The public key to be sent.
@@ -75,7 +83,7 @@ bridge.sendKey("your-public-key");
 
 ### `print(configs, html)`
 
-Sends an **HTML receipt** for printing with specified configurations.
+Sends an **HTML receipt** to be printed using a thermal printer. The function allows customization via configs, enabling different print settings.
 
 **Parameters:**
 - `configs` *(array of strings)* – A list of configuration settings for printing.
@@ -89,24 +97,30 @@ bridge.print(["config1", "config2"], receiptHTML);
 
 ---
 
-### `sendToDisplay(var1, var2)`
+### `sendToDisplay(buy, sell, port)`
 
-Sends a message to an external display.
+Sends formatted messages to an **external display**, such as an LED board, to show exchange rates, prices, or other real-time data. **BRIDGE** ensures that messages meet the display's formatting requirements.
 
 **Parameters:**
-- `var1` *(string)* – The first message string.
-- `var2` *(string)* – The second message string.
+- `buy` *(string)* – The first message string (buy rate).
+- `sell` *(string)* – The second message string (sell rate).
+- `port` *(array of strings, optional)* – A list of serial ports where messages will be sent.  
+  *If no port is provided, the message will be sent to every configured port in BRIDGE.*
 
 **Usage:**
 ```js
-bridge.sendToDisplay("Welcome", "Processing...");
+// Send to a specific port
+bridge.sendToDisplay("19.500", "20.00", ["COM3"]);
+
+// Send to all configured ports
+bridge.sendToDisplay("19.500", "20.00");
 ```
 
 ---
 
 ### `disconnect()`
 
-Closes the WebSocket connection.
+Terminates the WebSocket connection, freeing up resources and preventing unwanted communication after the session ends.
 
 **Usage:**
 ```js
@@ -145,7 +159,7 @@ bridge.sendKey("your-public-key");
 const receiptHTML = "<html><body><h1>Receipt</h1></body></html>";
 bridge.print(["default"], receiptHTML);
 
-bridge.sendToDisplay("Hello", "World");
+bridge.sendToDisplay("20.50", "21.00", ["COM1"]);
 
 bridge.disconnect();
 ```
