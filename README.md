@@ -198,7 +198,7 @@ This project includes several pre-configured receipt templates for testing, loca
 
 
 ### Receipt Template Structure
-Each receipt template is stored in RECEIPT_FILES as an object containing:
+Each receipt template is stored in `RECEIPT_FILES` as an object containing:
 
 - `path` – The directory where the receipt assets are stored. 
 - `files` – An array of required files (HTML, CSS, JS, data, images). 
