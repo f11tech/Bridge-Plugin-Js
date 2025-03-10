@@ -1,4 +1,3 @@
-// index.js
 (function () {
     class Bridge {
         constructor(port = 51510) {
