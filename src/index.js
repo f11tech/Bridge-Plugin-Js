@@ -1,30 +1,57 @@
+// index.js
 (function () {
     class Bridge {
         constructor(port = 51510) {
             this.webSocketManager = new window.WebSocketManager(port);
         }
 
-        connect() {
-            this.webSocketManager.connect();
+        connect(callbackSuccess, callbackError) {
+            const result = this.webSocketManager.connect();
+            if (result.success && typeof callbackSuccess === "function") {
+                callbackSuccess(result.message);
+            } else if (typeof callbackError === "function") {
+                callbackError(result.message);
+            }
         }
 
-        sendKey(publicKey) {
+        sendKey(publicKey, callbackSuccess, callbackError) {
             const message = { type: "publicKey", data: publicKey };
-            this.webSocketManager.sendMessage(message);
+            const result = this.webSocketManager.sendMessage(message);
+            if (result.success && typeof callbackSuccess === "function") {
+                callbackSuccess(result.message);
+            } else if (typeof callbackError === "function") {
+                callbackError(result.message);
+            }
         }
 
-        print(configs, html)  {
+        print(configs, html, callbackSuccess, callbackError) {
             const message = { type: 'printFile', data: { selectedConfigs: configs, htmlContent: html } };
-            this.webSocketManager.sendMessage(message);
+            const result = this.webSocketManager.sendMessage(message);
+            if (result.success && typeof callbackSuccess === "function") {
+                callbackSuccess(result.message);
+            } else if (typeof callbackError === "function") {
+                callbackError(result.message);
+            }
         }
 
-        sendToDisplay(var1, var2, port) {
+        sendToDisplay(var1, var2, port, callbackSuccess, callbackError) {
             const message = { type: 'portMessage', data: { messageA: var1, messageB: var2, selectedPort: port } };
-            this.webSocketManager.sendMessage(message);
+            const result = this.webSocketManager.sendMessage(message);
+            if (result.success && typeof callbackSuccess === "function") {
+                callbackSuccess(result.message);
+            } else if (typeof callbackError === "function") {
+                callbackError(result.message);
+            }
         }
 
-        disconnect() {
+        disconnect(callbackSuccess, callbackError) {
             this.webSocketManager.disconnect();
+            const result = { success: true, message: "Disconnected successfully" };
+            if (result.success && typeof callbackSuccess === "function") {
+                callbackSuccess(result.message);
+            } else if (typeof callbackError === "function") {
+                callbackError(result.message);
+            }
         }
     }
 
