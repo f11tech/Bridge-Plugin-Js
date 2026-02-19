@@ -1,6 +1,6 @@
 # BRIDGE Plugin
 
-The **BRIDGE Plugin** provides a WebSocket-based communication layer for integrating external services with the **BRIGGE Electron Service** application. It enables sending and receiving messages, printing receipts, and managing display messages via WebSocket.
+The **BRIDGE Plugin** provides a WebSocket-based communication layer for integrating external services with the **BRIDGE Electron Service** application. It enables sending and receiving messages, printing receipts, and managing display messages via WebSocket.
 
 ## Features
 
@@ -8,6 +8,7 @@ The **BRIDGE Plugin** provides a WebSocket-based communication layer for integra
 - **Receipt Printing**: Sends formatted HTML receipts for printing.
 - **Display Messaging**: Sends custom messages to external displays.
 - **Encryption Key Handling**: Manages public key exchange for secure communication.
+- **getDeviceData**: Obtains device data in a transparent way—the plugin handles connection, key generation, and decryption internally.
 
 ---
 
@@ -106,6 +107,77 @@ Transmits a **public key** to the server for secure communication. This is typic
 ```js
 bridge.sendKey("your-public-key");
 ```
+
+---
+
+### `getDeviceData(onSuccess, onError)` *(New)*
+
+Obtains **device data** from the BRIDGE Electron Service in a transparent way. This method encapsulates the entire flow: connection, key generation, public key transmission, encrypted token reception, and decryption. The consumer only provides callbacks—no key management or connection setup required.
+
+#### When to Use
+
+| Scenario | Use |
+|----------|-----|
+| Obtain device info without managing keys | `getDeviceData` |
+| Full control over keys and connection | `connect` + `sendKey` |
+| Existing integrations with manual flow | Keep using `connect` and `sendKey` |
+
+#### How It Works
+
+1. **Connection**: Checks if the WebSocket is connected. If not, establishes the connection automatically. If it is connecting, waits for it to open.
+2. **Keys**: On first use, generates an RSA key pair internally and stores it in memory. Subsequent calls reuse the same keys for the session.
+3. **Request**: Sends the public key to the server, receives the encrypted token, decrypts it with the private key, and returns the data to the consumer.
+
+#### Parameters
+
+- `onSuccess` *(function, optional)* – Callback invoked with the decrypted device data when the operation succeeds.
+- `onError` *(function, optional)* – Callback invoked when an error occurs (e.g., connection failed, decryption failed).
+
+#### Returns
+
+- Returns a **Promise** that resolves with the device data or rejects on error. You can use callbacks, Promise, or both.
+
+#### Usage
+
+```js
+// Using callbacks
+bridge.getDeviceData(
+  (data) => console.log("Device data:", data),
+  (err) => console.error("Error:", err)
+);
+
+// Using Promise / async-await
+try {
+  const data = await bridge.getDeviceData();
+  console.log("Device data:", data);
+} catch (err) {
+  console.error("Error:", err);
+}
+
+// Can be called without prior connect()—handles connection internally
+const bridge = new Bridge();
+bridge.getDeviceData((data) => {
+  // Use device data
+});
+```
+
+#### Behavior
+
+| **Condition** | **Result** |
+|---------------|------------|
+| Not connected | Establishes connection, then proceeds |
+| Already connected | Uses existing connection |
+| Connection in progress | Waits for connection, then proceeds |
+| First call | Generates keys, stores in memory |
+| Subsequent calls | Reuses stored keys |
+| Success | Calls `onSuccess` with decrypted data |
+| Error | Calls `onError` with error, Promise rejects |
+
+#### Notes
+
+- **Original API unchanged**: `connect`, `sendKey`, `print`, `sendToDisplay`, and `disconnect` work exactly as before. `getDeviceData` is an addition, not a replacement.
+- **No external storage**: Keys are kept in memory only. No `localStorage` or other persistence.
+- **Independent flow**: `getDeviceData` does not use `sendKey` internally. It manages its own message flow to receive and decrypt the encrypted token.
 
 ---
 
@@ -258,6 +330,8 @@ const receiptHTML = await createReceiptFile("MONEY_EXPRESS");
 
 ## Usage
 
+### Standard flow (manual connection and keys)
+
 ```js
 const bridge = new Bridge();
 bridge.connect();
@@ -271,6 +345,29 @@ bridge.sendToDisplay("20.50", "21.00", ["COM1"]);
 
 bridge.disconnect();
 ```
+
+### Simplified flow for device data (getDeviceData)
+
+```js
+const bridge = new Bridge();
+
+// No need to call connect() or sendKey()—getDeviceData handles everything internally
+bridge.getDeviceData(
+  (data) => console.log("Device data:", data),
+  (err) => console.error("Error:", err)
+);
+
+// Or with async/await
+const data = await bridge.getDeviceData();
+```
+
+### When to use each flow
+
+| Need | Method |
+|------|--------|
+| Get device data quickly, no setup | `getDeviceData(onSuccess, onError)` |
+| Full control: connect, send key, print, display | `connect()`, `sendKey()`, `print()`, `sendToDisplay()` |
+| Mix both | Use `connect()` for other operations, `getDeviceData()` for device info |
 ---
 
 ## License

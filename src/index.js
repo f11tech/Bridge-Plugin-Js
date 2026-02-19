@@ -43,9 +43,14 @@
             return this.webSocketManager.connect(onSuccess, onError, onClose);
         }
 
-        sendKey(publicKey, onSuccess, onError) {
+        sendKey(publicKey, callbackSuccess, callbackError) {
             const message = { type: "publicKey", data: publicKey };
-            this.webSocketManager.sendMessage(message, onSuccess, onError);
+            const result = this.webSocketManager.sendMessage(message);
+            if (result.success && typeof callbackSuccess === "function") {
+                callbackSuccess(result.message);
+            } else if (!result.success && typeof callbackError === "function") {
+                callbackError(result.message);
+            }
         }
 
         getDeviceData(onSuccess, onError) {
