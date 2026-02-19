@@ -56,14 +56,14 @@ import { v4 as uuidv4 } from 'uuid';
             }
         }
 
-        sendMessage(message, onSuccess, onError) {
+        sendMessage(message, onSuccess, onError, options = {}) {
             if (!this.socket || this.socket.readyState !== WebSocket.OPEN) {
                 console.error("WebSocket is not connected");
                 return { success: false, message: "WebSocket is not connected" };
             }
 
             message.uuid = uuidv4();
-            this.setCallbacks(message.uuid, onSuccess, onError);
+            this.setCallbacks(message.uuid, onSuccess, onError, options);
 
             try {
                 this.socket.send(JSON.stringify(message));
@@ -81,7 +81,9 @@ import { v4 as uuidv4 } from 'uuid';
             console.log("Handling message:", message);
             try {
                 if (message.type === "encryptedToken") {
-                    const decrypted = decryptData(message.data);
+                    const callbackData = this.#callbacks[message.uuid];
+                    const privateKey = callbackData?.privateKey;
+                    const decrypted = decryptData(message.data, privateKey);
                     console.log("Decrypted data:", decrypted);
                     this.executeCallbacks(message.uuid, message.status, decrypted);
                     this.dispatchStatus("decryption_success", decrypted);
@@ -116,7 +118,7 @@ import { v4 as uuidv4 } from 'uuid';
             }
         }
 
-        setCallbacks(uuid, onSuccess, onError) {
+        setCallbacks(uuid, onSuccess, onError, options = {}) {
             let callbackPair = {},
                 hasCallback = false;
 
@@ -128,6 +130,10 @@ import { v4 as uuidv4 } from 'uuid';
             if (typeof onError === 'function') {
                 callbackPair.onError = onError;
                 hasCallback = true;
+            }
+
+            if (options.privateKey) {
+                callbackPair.privateKey = options.privateKey;
             }
 
             if (!hasCallback) {
